@@ -27,16 +27,16 @@
             <v-card>
               <v-img
                 class="mx-auto"
-                lazy-src="../assets/logoap.png"
-                max-height="600"
-                max-width="600"
-                src="../assets/logoap.png"
+                lazy-src="../assets/logoat.png"
+                max-height="400"
+                max-width="400"
+                src="../assets/logoat.png"
               ></v-img>
 
               <v-card-title primary-title>
                 <div>
                   <h2>
-                    Gestor administrativo web "ColDream"
+                    Asignación de Áreas académicas
                   </h2>
                   <div>
                     <p></p>
@@ -45,13 +45,41 @@
                 </div>
               </v-card-title>
 
+              <v-container fluid>
+                <v-row align="center">
+                  <v-col>
+                    <v-select
+                      :items="areas"
+                      label="Áreas académicas"
+                    ></v-select>
+                  </v-col>
+                </v-row>
+                <v-row align="center">
+                  <v-col>
+                    <v-select :items="docente" label="Docente"></v-select>
+                    <v-divider inset vertical></v-divider>
+                    <v-row align="center" justify="space-around">
+                      <v-btn depressed>
+                        Consultar
+                      </v-btn>
+                      <v-btn depressed color="primary">
+                        Asignar
+                      </v-btn>
+                      <v-btn depressed color="error">
+                        Eliminar
+                      </v-btn>
+                    </v-row>
+                  </v-col>
+                </v-row>
+              </v-container>
+
               <v-card-actions>
+                <v-divider inset vertical></v-divider>
                 <div id="app">
                   <div id="nav">
-                    | <router-link to="/">Home</router-link> |
-                    | <router-link to="/Register">Registro</router-link> |
-                    | <router-link to="/login">Login</router-link> |
-                    | <router-link to="/areas">Areas académicas</router-link> |
+                    | <router-link to="/">Home</router-link> | |
+                    <router-link to="/Register">Registro</router-link> | |
+                    <router-link to="/login">Login</router-link> |
                   </div>
                   <router-view />
                 </div>
@@ -81,18 +109,18 @@
 
 <script>
 export default {
-  data() {
-    return {
-      menu: [
-        //{ icon: "login", title: "login" },
-      ],
-    };
-  },
-
-  methods: {
-    menuItems() {
-      return this.menu;
-    },
-  },
+  data: () => ({
+    areas: [
+      "Ciencias naturales y educación ambiental",
+      "Ciencias sociales, historia, geografía, constitución política y democracia",
+      "Educación artística y cultural",
+      "Educación ética y en valores humanos",
+      "Educación física, recreación y deportes",
+      "Humanidades, lengua castellana e idiomas extranjeros",
+      "Matemáticas",
+      "Tecnología e informática",
+    ],
+    docente: ["Ximena", "Carlos", "Marcela"],
+  }),
 };
 </script>
