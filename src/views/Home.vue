@@ -1,18 +1,96 @@
 <template>
-  <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div id="app">
+    <v-app id="inspire">
+      <v-toolbar color="blue darken-4" dark fixed app>
+        <v-toolbar-title>App ColDream</v-toolbar-title>
+        <v-spacer></v-spacer>
+        <v-toolbar-items class="hidden-sm-and-down">
+          <v-btn v-for="item in menu" :key="item.icon" :to="item.link" flat>{{
+            item.title
+          }}</v-btn>
+        </v-toolbar-items>
+        <v-menu class="hidden-md-and-up">
+          <v-toolbar-side-icon slot="activator"></v-toolbar-side-icon>
+          <v-list>
+            <v-list-tile v-for="item in menu" :key="item.icon">
+              <v-list-tile-content>
+                <v-list-tile-title>{{ item.title }}</v-list-tile-title>
+              </v-list-tile-content>
+            </v-list-tile>
+          </v-list>
+        </v-menu>
+      </v-toolbar>
+
+      <v-content>
+        <v-container fluid fill-height>
+          <v-flex xs12 sm6 offset-sm3>
+            <v-card>
+              <v-img
+                class="mx-auto"
+                lazy-src="../assets/logoap.png"
+                max-height="600"
+                max-width="600"
+                src="../assets/logoap.png"
+              ></v-img>
+
+              <v-card-title primary-title>
+                <div>
+                  <h2>
+                    Gestor administrativo web "ColDream"
+                  </h2>
+                  <div>
+                    <p></p>
+                    <p></p>
+                  </div>
+                </div>
+              </v-card-title>
+
+              <v-card-actions>
+                <div id="app">
+                  <div id="nav">
+                    <router-link to="/">Home</router-link> |
+                    <router-link to="/login">Login</router-link> |
+                  </div>
+                  <router-view />
+                </div>
+              </v-card-actions>
+            </v-card>
+          </v-flex>
+        </v-container>
+      </v-content>
+
+      <v-footer height="auto" color="blue darken-4" dark>
+        <v-layout justify-center row wrap>
+          <v-flex
+            color="blue darken-4"
+            dark
+            py-3
+            text-xs-center
+            white--text
+            xs12
+          >
+            &copy;2011 — <strong>Fundación Colombian Dream</strong>
+          </v-flex>
+        </v-layout>
+      </v-footer>
+    </v-app>
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
-
 export default {
-  name: 'Home',
-  components: {
-    HelloWorld
-  }
-}
+  data() {
+    return {
+      menu: [
+        //{ icon: "login", title: "login" },
+      ],
+    };
+  },
+
+  methods: {
+    menuItems() {
+      return this.menu;
+    },
+  },
+};
 </script>
