@@ -28,8 +28,8 @@
               <v-img
                 class="mx-auto"
                 lazy-src="../assets/logoat.png"
-                max-height="400"
-                max-width="400"
+                max-height="250"
+                max-width="250"
                 src="../assets/logoat.png"
               ></v-img>
 
@@ -58,19 +58,12 @@
                     label="Contraseña"
                     type="password"
                   ></v-text-field>
+                  <v-btn block color="primary" @click="$router.push('/menu')">Entrar</v-btn>
                 </v-form>
               </v-card-text>
 
               <v-card-actions>
-                <div id="app">
-                  <div id="nav">
-                    | <router-link to="/">Home</router-link> | 
-                    | <router-link to="/Register">Registro</router-link> |
-                    | <router-link to="/areas">Areas académicas</router-link> |
-                    | <router-link to="/requests">Solicitudes</router-link> |
-                  </div>
-                  <router-view />
-                </div>
+                
               </v-card-actions>
             </v-card>
           </v-flex>

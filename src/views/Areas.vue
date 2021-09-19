@@ -28,8 +28,8 @@
               <v-img
                 class="mx-auto"
                 lazy-src="../assets/logoat.png"
-                max-height="320"
-                max-width="320"
+                max-height="250"
+                max-width="250"
                 src="../assets/logoat.png"
               ></v-img>
 
@@ -62,11 +62,14 @@
                       <v-btn depressed>
                         Consultar
                       </v-btn>
-                      <v-btn depressed color="primary">
+                      <v-btn depressed color="green lighten-4">
                         Asignar
                       </v-btn>
                       <v-btn depressed color="error">
                         Eliminar
+                      </v-btn>
+                      <v-btn depressed color="primary" @click="$router.push('/menu')">
+                        Menú
                       </v-btn>
                     </v-row>
                   </v-col>
@@ -74,16 +77,7 @@
               </v-container>
 
               <v-card-actions>
-                <v-divider inset vertical></v-divider>
-                <div id="app">
-                  <div id="nav">
-                    | <router-link to="/">Home</router-link> | |
-                    <router-link to="/Register">Registro</router-link> | |
-                    <router-link to="/login">Login</router-link> |
-                    | <router-link to="/requests">Solicitudes</router-link> |
-                  </div>
-                  <router-view />
-                </div>
+                
               </v-card-actions>
             </v-card>
           </v-flex>

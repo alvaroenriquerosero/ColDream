@@ -114,6 +114,10 @@
                       Cancelar
                     </v-btn>
                     <v-spacer></v-spacer>
+                    <v-btn color="primary" text @click="$router.push('/menu')">
+                      Menú
+                    </v-btn>
+                    <v-spacer></v-spacer>
                     <v-slide-x-reverse-transition>
                       <v-tooltip v-if="formHasErrors" left>
                         <template v-slot:activator="{ on, attrs }">
@@ -138,15 +142,7 @@
               </v-col>
 
               <v-card-actions>
-                <div id="app">
-                  <div id="nav">
-                    | <router-link to="/">Home</router-link> | |
-                    <router-link to="/login">Login</router-link> |
-                    | <router-link to="/areas">Areas académicas</router-link> |
-                    | <router-link to="/requests">Solicitudes</router-link> |
-                  </div>
-                  <router-view />
-                </div>
+                
               </v-card-actions>
             </v-card>
           </v-flex>

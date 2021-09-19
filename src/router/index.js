@@ -5,6 +5,7 @@ import Login from '../views/Login.vue'
 import Register from '../views/Register.vue'
 import Areas from '../views/Areas.vue'
 import Requests from '../views/Requests.vue'
+import Menu from '../views/Menu.vue'
 
 Vue.use(VueRouter)
 
@@ -33,6 +34,11 @@ const routes = [
     path: '/requests',
     name: 'Requests',
     component: Requests    
+  },
+  {
+    path: '/menu',
+    name: 'Menu',
+    component: Menu    
   }
 ]
 

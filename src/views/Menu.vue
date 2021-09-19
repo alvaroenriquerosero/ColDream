@@ -28,8 +28,8 @@
               <v-img
                 class="mx-auto"
                 lazy-src="../assets/logoap.png"
-                max-height="400"
-                max-width="400"
+                max-height="200"
+                max-width="200"
                 src="../assets/logoap.png"
               ></v-img>
 
@@ -38,19 +38,38 @@
                   <h3>
                     Gestor administrativo web "ColDream"
                   </h3>
-                  <div>
-                    <v-flex>
+                  <v-flex>
                     <v-form>
                       <v-divider inset vertical></v-divider>
                       <v-btn
                         block
                         color="primary"
-                        @click="$router.push('/login')"
-                        >Inicio de sesión</v-btn
+                        @click="$router.push('/register')"
+                        >Registro de Docentes</v-btn
+                      >
+                      <v-divider inset vertical></v-divider>
+                      <v-btn
+                        block
+                        color="primary"
+                        @click="$router.push('/areas')"
+                        >Asignación de áreas académicas</v-btn
+                      >
+                      <v-divider inset vertical></v-divider>
+                      <v-btn
+                        block
+                        color="primary"
+                        @click="$router.push('/requests')"
+                        >Solicitud de Hora Cátedra</v-btn
+                      >
+                      <v-divider inset vertical></v-divider>
+                      <v-btn
+                        block
+                        color="blue-grey lighten-2"
+                        @click="$router.push('/')"
+                        >Finalizar sesión</v-btn
                       >
                     </v-form>
                   </v-flex>
-                  </div>
                 </div>
               </v-card-title>
 
@@ -84,9 +103,7 @@
 export default {
   data() {
     return {
-      menu: [
-        //{ icon: "login", title: "login" },
-      ],
+      //menu: [{ icon: "login", title: "login" }],
     };
   },
 
