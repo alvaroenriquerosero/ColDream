@@ -143,6 +143,7 @@
                     | <router-link to="/">Home</router-link> | |
                     <router-link to="/login">Login</router-link> |
                     | <router-link to="/areas">Areas académicas</router-link> |
+                    | <router-link to="/requests">Solicitudes</router-link> |
                   </div>
                   <router-view />
                 </div>

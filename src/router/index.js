@@ -4,6 +4,7 @@ import Home from '../views/Home.vue'
 import Login from '../views/Login.vue'
 import Register from '../views/Register.vue'
 import Areas from '../views/Areas.vue'
+import Requests from '../views/Requests.vue'
 
 Vue.use(VueRouter)
 
@@ -27,6 +28,11 @@ const routes = [
     path: '/areas',
     name: 'Areas',
     component: Areas    
+  },
+  {
+    path: '/requests',
+    name: 'Requests',
+    component: Requests    
   }
 ]
 

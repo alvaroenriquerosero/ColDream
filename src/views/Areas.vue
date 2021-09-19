@@ -28,8 +28,8 @@
               <v-img
                 class="mx-auto"
                 lazy-src="../assets/logoat.png"
-                max-height="400"
-                max-width="400"
+                max-height="320"
+                max-width="320"
                 src="../assets/logoat.png"
               ></v-img>
 
@@ -80,6 +80,7 @@
                     | <router-link to="/">Home</router-link> | |
                     <router-link to="/Register">Registro</router-link> | |
                     <router-link to="/login">Login</router-link> |
+                    | <router-link to="/requests">Solicitudes</router-link> |
                   </div>
                   <router-view />
                 </div>
