@@ -6,6 +6,7 @@ import Register from '../views/Register.vue'
 import Areas from '../views/Areas.vue'
 import Requests from '../views/Requests.vue'
 import Menu from '../views/Menu.vue'
+import DList from '../views/DList.vue'
 
 Vue.use(VueRouter)
 
@@ -39,6 +40,11 @@ const routes = [
     path: '/menu',
     name: 'Menu',
     component: Menu    
+  },
+  {
+    path: '/dlist',
+    name: 'DList',
+    component: DList    
   }
 ]
 

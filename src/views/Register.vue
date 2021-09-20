@@ -118,6 +118,10 @@
                       Menú
                     </v-btn>
                     <v-spacer></v-spacer>
+                    <v-btn text @click="$router.push('/dlist')">
+                      Consultar
+                    </v-btn>
+                    <v-spacer></v-spacer>
                     <v-slide-x-reverse-transition>
                       <v-tooltip v-if="formHasErrors" left>
                         <template v-slot:activator="{ on, attrs }">
