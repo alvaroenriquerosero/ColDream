@@ -36,7 +36,7 @@
               <v-card-title primary-title class="justify-center">
                 <div>
                   <h3>
-                    Gestor administrativo web "ColDream"
+                    Consulta de Docentes Registrados
                   </h3>
                   <v-flex>
                     <v-form>

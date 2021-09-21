@@ -5,8 +5,10 @@ import Login from '../views/Login.vue'
 import Register from '../views/Register.vue'
 import Areas from '../views/Areas.vue'
 import Requests from '../views/Requests.vue'
+import Schedule from '../views/Schedule.vue'
 import Menu from '../views/Menu.vue'
 import DList from '../views/DList.vue'
+
 
 Vue.use(VueRouter)
 
@@ -45,7 +47,13 @@ const routes = [
     path: '/dlist',
     name: 'DList',
     component: DList    
-  }
+  },
+  {
+    path: '/schedule',
+    name: 'Schedule',
+    component: Schedule    
+  },
+
 ]
 
 const router = new VueRouter({
