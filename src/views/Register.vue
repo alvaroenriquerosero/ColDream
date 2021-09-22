@@ -1,33 +1,15 @@
 <template>
   <div id="app">
     <v-app id="inspire">
-      
-
-      <v-content>
-        <v-container fluid fill-height>
-          <v-flex xs12 sm6 offset-sm3>
-            <v-card>
-              <v-img
-                class="mx-auto"
-                lazy-src="../assets/logoat.png"
-                max-height="200"
-                max-width="200"
-                src="../assets/logoat.png"
-              ></v-img>
-
-              <v-card-title primary-title>
-                <div>
-                  <h2>
-                    Registro de Docentes
-                  </h2>
-                  <div>
-                    <p></p>
-                    <p></p>
-                  </div>
-                </div>
-              </v-card-title>
-
-              <v-col>
+      <v-container fluid>
+        <div class="text-center">
+          <h1>
+            Registro de Docentes
+          </h1>
+          <v-divider inset vertical></v-divider>
+          <div>
+            <v-row justify="space-around">
+              <v-col cols="5">
                 <v-card ref="form">
                   <v-card-text>
                     <v-text-field
@@ -96,11 +78,7 @@
                       Cancelar
                     </v-btn>
                     <v-spacer></v-spacer>
-                    <v-btn color="primary" text @click="$router.push('/menu')">
-                      Menú
-                    </v-btn>
-                    <v-spacer></v-spacer>
-                    <v-btn text @click="$router.push('/dlist')">
+                    <v-btn color="primary" text @click="$router.push('/dlist')">
                       Consultar
                     </v-btn>
                     <v-spacer></v-spacer>
@@ -120,22 +98,23 @@
                         <span>Refresh form</span>
                       </v-tooltip>
                     </v-slide-x-reverse-transition>
-                    <v-btn color="primary" text @click="submit">
+                    <v-btn color="success" text @click="submit">
                       ingresar
                     </v-btn>
                   </v-card-actions>
                 </v-card>
               </v-col>
-
-              <v-card-actions>
-                
-              </v-card-actions>
-            </v-card>
-          </v-flex>
-        </v-container>
-      </v-content>
-
-      
+            </v-row>
+            <v-divider inset vertical></v-divider>
+          </div>
+          <div class="text-center"></div>
+          <div class="my-2">
+            <v-btn x-large color="primary" dark @click="$router.push('/menu')">
+              Volver
+            </v-btn>
+          </div>
+        </div>
+      </v-container>
     </v-app>
   </div>
 </template>
@@ -202,3 +181,5 @@ export default {
   },
 };
 </script>
+
+<style></style>

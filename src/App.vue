@@ -1,8 +1,11 @@
 <template>
   <v-app>
     <Header />
+    <Logo />
+    
     
     <v-container>
+      
 
       <router-view></router-view>
 
@@ -14,12 +17,16 @@
 <script>
 import Header from './components/Header';
 import Footer from './components/Footer';
+import Home from './views/Home.vue';
+import Logo from './components/Logo.vue';
 
 export default {
   name: 'App',
   components: {
     Header,
+    Logo,
     Footer,
+    Home,
     
   },
 

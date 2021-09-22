@@ -1,85 +1,60 @@
 <template>
   <div id="app">
     <v-app id="inspire">
-      
-
-      <v-content>
-        <v-container fluid fill-height>
-          <v-flex xs12 sm6 offset-sm3>
-            <v-card>
-              <v-img
-                class="mx-auto"
-                lazy-src="../assets/logoap.png"
-                max-height="200"
-                max-width="200"
-                src="../assets/logoap.png"
-              ></v-img>
-
-              <v-card-title primary-title class="justify-center">
-                <div>
-                  <h3>
-                    Gestor administrativo web "ColDream"
-                  </h3>
-                  <v-flex>
-                    <v-form>
-                      <v-divider inset vertical></v-divider>
+      <v-container fluid>
+        
+        <div class="text-center">
+          <h1>
+            Menú Principal
+          </h1>
+          <v-divider inset vertical></v-divider>
+          <div>
+            <v-row justify="space-around">
+              <v-col cols="5">
+                <v-form>
+                  <v-divider inset vertical></v-divider>
                       <v-btn
                         block
-                        color="primary"
+                        x-large color="primary"
                         @click="$router.push('/register')"
                         >Registro de Docentes</v-btn
                       >
                       <v-divider inset vertical></v-divider>
                       <v-btn
                         block
-                        color="primary"
+                        x-large color="primary"
                         @click="$router.push('/areas')"
                         >Asignación de áreas académicas</v-btn
                       >
                       <v-divider inset vertical></v-divider>
                       <v-btn
                         block
-                        color="primary"
+                        x-large color="primary"
                         @click="$router.push('/requests')"
                         >Solicitud de Hora Cátedra</v-btn
                       >
                       <v-divider inset vertical></v-divider>
                       <v-btn
                         block
-                        color="blue-grey lighten-2"
+                        x-large color="blue-grey lighten-2"
                         @click="$router.push('/')"
                         >Finalizar sesión</v-btn
                       >
-                    </v-form>
-                  </v-flex>
-                </div>
-              </v-card-title>
 
-              <v-card-actions>
-                
-              </v-card-actions>
-            </v-card>
-          </v-flex>
-        </v-container>
-      </v-content>
-
-      
+                </v-form>
+              </v-col>
+            </v-row>
+            <v-divider inset vertical></v-divider>
+          </div>
+        </div>
+      </v-container>
     </v-app>
   </div>
 </template>
 
 <script>
-export default {
-  data() {
-    return {
-      //menu: [{ icon: "login", title: "login" }],
-    };
-  },
-
-  methods: {
-    menuItems() {
-      return this.menu;
-    },
-  },
-};
+export default {};
 </script>
+
+<style></style>
+
