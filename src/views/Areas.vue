@@ -15,7 +15,7 @@
             <v-select :items="docente" label="Docente"></v-select>
             <v-divider inset vertical></v-divider>
             <v-row align="center" justify="space-around">
-              <v-btn x-large depressed>
+              <v-btn x-large depressed @click="$router.push('/dlist')">
                 Consultar
               </v-btn>
               <v-btn x-large depressed color="green lighten-4">

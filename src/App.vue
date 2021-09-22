@@ -2,37 +2,30 @@
   <v-app>
     <Header />
     <Logo />
-    
-    
+
     <v-container>
-      
-
       <router-view></router-view>
-
     </v-container>
-<Footer />
+    <Footer />
   </v-app>
 </template>
 
 <script>
-import Header from './components/Header';
-import Footer from './components/Footer';
-import Home from './views/Home.vue';
-import Logo from './components/Logo.vue';
+import Header from "./components/Header";
+import Footer from "./components/Footer";
+import Home from "./views/Home.vue";
+import Logo from "./components/Logo.vue";
 
 export default {
-  name: 'App',
+  name: "App",
   components: {
     Header,
     Logo,
     Footer,
     Home,
-    
   },
 
-  data: () => ({
-    
-  }),
+  data: () => ({}),
 };
 </script>
 <style>

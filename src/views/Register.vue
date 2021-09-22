@@ -78,7 +78,7 @@
                       Cancelar
                     </v-btn>
                     <v-spacer></v-spacer>
-                    <v-btn color="primary" text @click="$router.push('/dlist')">
+                    <v-btn color="primary" text>
                       Consultar
                     </v-btn>
                     <v-spacer></v-spacer>

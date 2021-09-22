@@ -36,7 +36,7 @@
                       <v-divider inset vertical></v-divider>
                       <v-btn
                         block
-                        x-large color="blue-grey lighten-2"
+                        x-large color="secondary"
                         @click="$router.push('/')"
                         >Finalizar sesión</v-btn
                       >

@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <v-app id="inspire">
-      <v-container fluid>
+      <v-container class="mt-9 mpb-0">
         <v-row justify="space-around">
           <v-col cols="5">
             <v-divider inset vertical></v-divider>

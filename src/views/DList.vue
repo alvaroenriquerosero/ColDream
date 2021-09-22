@@ -4,12 +4,12 @@
       <v-container fluid>
         <div class="text-center">
           <h1>
-            Consulta De Docentes Registrados
+            Consulta De Áreas y Docentes
           </h1>
           <v-divider inset vertical></v-divider>
           <div>
             <v-row justify="space-around">
-              <v-col cols="10">
+              <v-col cols="12">
                 <v-card-title primary-title class="justify-center">
                   <div>
                     <v-flex>
@@ -47,7 +47,7 @@
               x-large
               color="primary"
               dark
-              @click="$router.push('/register')"
+              @click="$router.push('/areas')"
             >
               Volver
             </v-btn>
