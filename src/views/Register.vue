@@ -1,182 +1,251 @@
 <template>
   <div id="app">
     <v-app id="inspire">
-      <v-container fluid>
-        <div class="text-center">
-          <h1>
-            Registro de Docentes
-          </h1>
-          <v-divider inset vertical></v-divider>
-          <div>
-            <v-row justify="space-around">
-              <v-col cols="5">
-                <v-card ref="form">
-                  <v-card-text>
-                    <v-text-field
-                      ref="name"
-                      v-model="name"
-                      :rules="[() => !!name || 'This field is required']"
-                      :error-messages="errorMessages"
-                      label="Nombre completo"
-                      placeholder="John Doe"
-                      required
-                    ></v-text-field>
-                    <v-text-field
-                      ref="address"
-                      v-model="address"
-                      :rules="[
-                        () => !!address || 'This field is required',
-                        () =>
-                          (!!address && address.length <= 60) ||
-                          'Address must be less than 25 characters',
-                        addressCheck,
-                      ]"
-                      label="Dirección"
-                      placeholder="Calle/carrera etc."
-                      counter="60"
-                      required
-                    ></v-text-field>
-                    <v-text-field
-                      ref="city"
-                      v-model="city"
-                      :rules="[
-                        () => !!city || 'This field is required',
-                        addressCheck,
-                      ]"
-                      label="Ciudad"
-                      placeholder="Bogotá"
-                      required
-                    ></v-text-field>
-                    <v-text-field
-                      ref="state"
-                      v-model="state"
-                      :rules="[() => !!state || 'This field is required']"
-                      label="Departamento"
-                      required
-                      placeholder="Cund"
-                    ></v-text-field>
-                    <v-text-field
-                      ref="phone"
-                      v-model="phone"
-                      :rules="[() => !!phone || 'This field is required']"
-                      label="Telefono"
-                      required
-                      placeholder="1234567890"
-                    ></v-text-field>
-                    <v-text-field
-                      ref="email"
-                      v-model="email"
-                      :rules="[() => !!email || 'This field is required']"
-                      label="Correo electrónico"
-                      required
-                      placeholder="example@example.com"
-                    ></v-text-field>
-                  </v-card-text>
-                  <v-divider class="mt-12"></v-divider>
-                  <v-card-actions>
-                    <v-btn text>
-                      Cancelar
-                    </v-btn>
-                    <v-spacer></v-spacer>
-                    <v-btn color="primary" text>
-                      Consultar
-                    </v-btn>
-                    <v-spacer></v-spacer>
-                    <v-slide-x-reverse-transition>
-                      <v-tooltip v-if="formHasErrors" left>
-                        <template v-slot:activator="{ on, attrs }">
-                          <v-btn
-                            icon
-                            class="my-0"
-                            v-bind="attrs"
-                            @click="resetForm"
-                            v-on="on"
-                          >
-                            <v-icon>mdi-refresh</v-icon>
-                          </v-btn>
-                        </template>
-                        <span>Refresh form</span>
-                      </v-tooltip>
-                    </v-slide-x-reverse-transition>
-                    <v-btn color="success" text @click="submit">
-                      ingresar
-                    </v-btn>
-                  </v-card-actions>
-                </v-card>
-              </v-col>
-            </v-row>
-            <v-divider inset vertical></v-divider>
-          </div>
-          <div class="text-center"></div>
-          <div class="my-2">
-            <v-btn x-large color="primary" dark @click="$router.push('/menu')">
-              Volver
-            </v-btn>
-          </div>
-        </div>
-      </v-container>
+      <v-data-table
+        :headers="headers"
+        :items="docentes"
+        sort-by="name"
+        class="elevation-1"
+      >
+        <template v-slot:top>
+          <v-toolbar flat>
+            <v-toolbar-title>Registro De Docentes</v-toolbar-title>
+            <v-divider class="mx-4" inset vertical></v-divider>
+            <v-spacer></v-spacer>
+            <v-dialog v-model="dialog" max-width="500px">
+              <template v-slot:activator="{ on, attrs }">
+                <v-btn
+                  color="primary"
+                  dark
+                  class="mb-2"
+                  v-bind="attrs"
+                  v-on="on"
+                >
+                  Nuevo Registro
+                </v-btn>
+              </template>
+              <v-card>
+                <v-card-title>
+                  <span class="text-h5">{{ formTitle }}</span>
+                </v-card-title>
+
+                <v-card-text>
+                  <v-container>
+                    <v-row>
+                      <v-col cols="12" sm="6" md="4">
+                        <v-text-field
+                          v-model="editedItem.name"
+                          label="Nombre"
+                        ></v-text-field>
+                      </v-col>
+                      <v-col cols="12" sm="6" md="4">
+                        <v-text-field
+                          v-model="editedItem.telefono"
+                          label="Telefono"
+                        ></v-text-field>
+                      </v-col>
+                      <v-col cols="12" sm="6" md="4">
+                        <v-text-field
+                          v-model="editedItem.correo"
+                          label="Correo"
+                        ></v-text-field>
+                      </v-col>
+                      <v-col cols="12" sm="6" md="4">
+                        <v-text-field
+                          v-model="editedItem.ciudad"
+                          label="Ciudad"
+                        ></v-text-field>
+                      </v-col>
+                      <v-col cols="12" sm="6" md="4">
+                        <v-text-field
+                          v-model="editedItem.pais"
+                          label="País"
+                        ></v-text-field>
+                      </v-col>
+                    </v-row>
+                  </v-container>
+                </v-card-text>
+
+                <v-card-actions>
+                  <v-spacer></v-spacer>
+                  <v-btn color="blue darken-1" text @click="close">
+                    Cancelar
+                  </v-btn>
+                  <v-btn color="blue darken-1" text @click="save">
+                    Guardar
+                  </v-btn>
+                </v-card-actions>
+              </v-card>
+            </v-dialog>
+            <v-dialog v-model="dialogDelete" max-width="500px">
+              <v-card>
+                <v-card-title class="text-h5"
+                  >Esta seguro de borrar este registro?</v-card-title
+                >
+                <v-card-actions>
+                  <v-spacer></v-spacer>
+                  <v-btn color="blue darken-1" text @click="closeDelete"
+                    >Cancelar</v-btn
+                  >
+                  <v-btn color="blue darken-1" text @click="deleteItemConfirm"
+                    >Aceptar</v-btn
+                  >
+                  <v-spacer></v-spacer>
+                </v-card-actions>
+              </v-card>
+            </v-dialog>
+          </v-toolbar>
+        </template>
+        <template v-slot:item.actions="{ item }">
+          <v-icon small class="mr-2" @click="editItem(item)">
+            mdi-pencil
+          </v-icon>
+          <v-icon small @click="deleteItem(item)">
+            mdi-delete
+          </v-icon>
+        </template>
+        <template v-slot:no-data>
+          <v-btn color="primary" @click="initialize">
+            Reset
+          </v-btn>
+        </template>
+      </v-data-table>
+      <v-btn x-large color="primary" @click="$router.push('/menu')"
+        >Volver</v-btn
+      >
     </v-app>
   </div>
 </template>
 
 <script>
 export default {
-  //new Vue({
-  //el: '#app',
-  //vuetify: new Vuetify(),
   data: () => ({
-    errorMessages: "",
-    name: null,
-    address: null,
-    city: null,
-    state: null,
-    phone: null,
-    email: null,
-    formHasErrors: false,
+    dialog: false,
+    dialogDelete: false,
+    headers: [
+      {
+        text: "Docentes",
+        align: "start",
+        sortable: false,
+        value: "name",
+      },
+      { text: "Telefono", value: "telefono" },
+      { text: "Correo", value: "correo" },
+      { text: "Ciudad", value: "ciudad" },
+      { text: "País", value: "pais" },
+      { text: "Actions", value: "actions", sortable: false },
+    ],
+    docentes: [],
+    editedIndex: -1,
+    editedItem: {
+      name: "",
+      telefono: 1234567890,
+      correo: "",
+      ciudad: "",
+      pais: "",
+    },
+    defaultItem: {
+      name: "nombre",
+      telefono: 1234567890,
+      correo: "example@example.com",
+      ciudad: "Bogotá",
+      pais: "Colombia",
+    },
   }),
 
   computed: {
-    form() {
-      return {
-        name: this.name,
-        address: this.address,
-        city: this.city,
-        state: this.state,
-        phone: this.phone,
-        email: this.email,
-      };
+    formTitle() {
+      return this.editedIndex === -1 ? "Nuevo Registro" : "Editar Registro";
     },
   },
 
   watch: {
-    name() {
-      this.errorMessages = "";
+    dialog(val) {
+      val || this.close();
+    },
+    dialogDelete(val) {
+      val || this.closeDelete();
     },
   },
 
+  created() {
+    this.initialize();
+  },
+
   methods: {
-    addressCheck() {
-      this.errorMessages =
-        this.address && !this.name ? `Hey! I'm required` : "";
-
-      return true;
+    initialize() {
+      this.docentes = [
+        {
+          name: "Ximena",
+          telefono: 1234567890,
+          correo: "example@example.com",
+          ciudad: "Bogotá",
+          pais: "Colombia",
+        },
+        {
+          name: "Carlos",
+          telefono: 1234567890,
+          correo: "example@example.com",
+          ciudad: "Bogotá",
+          pais: "Colombia",
+        },
+        {
+          name: "Marcela",
+          telefono: 1234567890,
+          correo: "example@example.com",
+          ciudad: "Bogotá",
+          pais: "Colombia",
+        },
+        {
+          name: "Sergio",
+          telefono: 1234567890,
+          correo: "example@example.com",
+          ciudad: "Bogotá",
+          pais: "Colombia",
+        },
+      ];
     },
-    resetForm() {
-      this.errorMessages = [];
-      this.formHasErrors = false;
 
-      Object.keys(this.form).forEach((f) => {
-        this.$refs[f].reset();
+    editItem(item) {
+      this.editedIndex = this.docentes.indexOf(item);
+      this.editedItem = Object.assign({}, item);
+      this.dialog = true;
+    },
+
+    deleteItem(item) {
+      this.editedIndex = this.docentes.indexOf(item);
+      this.editedItem = Object.assign({}, item);
+      this.dialogDelete = true;
+    },
+
+    deleteItemConfirm() {
+      this.docentes.splice(this.editedIndex, 1);
+      this.closeDelete();
+    },
+
+    close() {
+      this.dialog = false;
+      this.$nextTick(() => {
+        this.editedItem = Object.assign({}, this.defaultItem);
+        this.editedIndex = -1;
       });
     },
-    submit() {
-      this.formHasErrors = false;
 
-      Object.keys(this.form).forEach((f) => {
-        if (!this.form[f]) this.formHasErrors = true;
-
-        this.$refs[f].validate(true);
+    closeDelete() {
+      this.dialogDelete = false;
+      this.$nextTick(() => {
+        this.editedItem = Object.assign({}, this.defaultItem);
+        this.editedIndex = -1;
       });
+    },
+
+    save() {
+      if (this.editedIndex > -1) {
+        Object.assign(this.docentes[this.editedIndex], this.editedItem);
+      } else {
+        this.docentes.push(this.editedItem);
+      }
+      this.close();
     },
   },
 };

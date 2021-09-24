@@ -15,6 +15,7 @@
           <v-col cols="6">
             <v-select :items="docente" label="Docente"></v-select>
             <v-divider inset vertical></v-divider>
+            
             <v-row align="center" justify="space-around">
               <v-btn x-large depressed color="green lighten-4" @click="$router.push('/schedule')">
                 Consultar
@@ -39,7 +40,14 @@
 </template>
 
 <script>
+
+import DateField from '../components/inputs/DateField.vue'
+
 export default {
+  name: "App",
+  components: {
+    DateField,
+  },
   data: () => ({
     areas: [
       "Ciencias naturales y educación ambiental",

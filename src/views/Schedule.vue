@@ -1,97 +1,56 @@
 <template>
   <div id="app">
     <v-app id="inspire">
-      <h1 class="text-center">Disponibiliidad De Agenda</h1>
-      <v-divider inset vertical></v-divider>
-      <v-container fluid>
-        <v-row align="center">
-          <v-col>
-            <v-sheet height="600">
-              <v-calendar
-                ref="calendar"
-                :now="today"
-                :value="today"
-                :events="events"
-                color="primary"
-                type="week"
-              ></v-calendar>
-            </v-sheet>
-            <v-divider inset vertical></v-divider>
-            <v-row align="center" justify="space-around">
-              <v-btn
-                x-large
-                depressed
-                color="green lighten-4"
-                @click="$router.push('/schedule')"
-              >
-                Solicitar
+      <v-row>
+        <v-col align-self="center" cols="12" sm="6" md="4">
+          <v-menu
+            ref="menu"
+            v-model="menu"
+            :close-on-content-click="false"
+            :return-value.sync="date"
+            transition="scale-transition"
+            offset-y
+            min-width="auto"
+          >
+            <template v-slot:activator="{ on, attrs }">
+              <v-text-field
+                v-model="date"
+                label="Fecha a elegir"
+                prepend-icon="mdi-calendar"
+                readonly
+                v-bind="attrs"
+                v-on="on"
+              ></v-text-field>
+            </template>
+            <v-date-picker align="center" v-model="date" no-title scrollable>
+              <v-spacer></v-spacer>
+              <v-btn text color="primary" @click="menu = false">
+                Cancel
               </v-btn>
-              <v-btn x-large depressed color="error"> Eliminar </v-btn>
-              <v-btn
-                x-large
-                depressed
-                color="primary"
-                @click="$router.push('/menu')"
-              >
-                Volver
+              <v-btn text color="primary" @click="$refs.menu.save(date)">
+                OK
               </v-btn>
-            </v-row>
-          </v-col>
+            </v-date-picker>
+          </v-menu>
+        </v-col>
+
+        <v-row justify="space-around" align="center">
+          <v-time-picker v-model="picker" ampm-in-title></v-time-picker>
         </v-row>
-        <v-divider inset vertical></v-divider>
-      </v-container>
+      </v-row>
+      <v-btn x-large depressed color="green lighten-4">
+        Asignar
+      </v-btn>
+      <v-spacer></v-spacer>
+      <v-btn x-large depressed color="primary" @click="$router.push('/menu')">
+        Volver
+      </v-btn>
     </v-app>
   </div>
 </template>
 
 <script>
-export default {
-  data: () => ({
-    today: "2019-01-08",
-    events: [
-      {
-        name: "Weekly Meeting",
-        start: "2019-01-07 09:00",
-        end: "2019-01-07 10:00",
-      },
-      {
-        name: `Thomas' Birthday`,
-        start: "2019-01-10",
-      },
-      {
-        name: "Mash Potatoes",
-        start: "2019-01-09 12:30",
-        end: "2019-01-09 15:30",
-      },
-    ],
-  }),
-  mounted() {
-    this.$refs.calendar.scrollToTime("08:00");
-  },
-};
+export default {};
 </script>
 
-<style scoped>
-.my-event {
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  border-radius: 2px;
-  background-color: #1867c0;
-  color: #ffffff;
-  border: 1px solid #1867c0;
-  font-size: 12px;
-  padding: 3px;
-  cursor: pointer;
-  margin-bottom: 1px;
-  left: 4px;
-  margin-right: 8px;
-  position: relative;
-}
-
-.my-event.with-time {
-  position: absolute;
-  right: 4px;
-  margin-right: 0px;
-}
-</style>
+<style></style>
