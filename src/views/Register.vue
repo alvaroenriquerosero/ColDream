@@ -35,7 +35,13 @@
                       <v-col cols="12" sm="6" md="4">
                         <v-text-field
                           v-model="editedItem.name"
-                          label="Nombre"
+                          label="ID"
+                        ></v-text-field>
+                      </v-col>
+                      <v-col cols="12" sm="6" md="4">
+                        <v-text-field
+                          v-model="editedItem.name"
+                          label="Nombres Completos"
                         ></v-text-field>
                       </v-col>
                       <v-col cols="12" sm="6" md="4">
@@ -124,20 +130,22 @@ export default {
     dialogDelete: false,
     headers: [
       {
-        text: "Docentes",
+        text: "ID",
         align: "start",
-        sortable: false,
-        value: "name",
+        sortable: true,
+        value: "id",
       },
+      { text: "Nombres Completos", value: "name" },
       { text: "Telefono", value: "telefono" },
       { text: "Correo", value: "correo" },
       { text: "Ciudad", value: "ciudad" },
       { text: "País", value: "pais" },
-      { text: "Actions", value: "actions", sortable: false },
+      { text: "Actions", value: "actions", sortable: true },
     ],
     docentes: [],
     editedIndex: -1,
     editedItem: {
+      id: 0,
       name: "",
       telefono: 1234567890,
       correo: "",
@@ -145,6 +153,7 @@ export default {
       pais: "",
     },
     defaultItem: {
+      id: 1234567890,
       name: "nombre",
       telefono: 1234567890,
       correo: "example@example.com",
@@ -176,6 +185,7 @@ export default {
     initialize() {
       this.docentes = [
         {
+          id: 1234567890,
           name: "Ximena",
           telefono: 1234567890,
           correo: "example@example.com",
@@ -183,6 +193,7 @@ export default {
           pais: "Colombia",
         },
         {
+          id: 1234567890,
           name: "Carlos",
           telefono: 1234567890,
           correo: "example@example.com",
@@ -190,6 +201,7 @@ export default {
           pais: "Colombia",
         },
         {
+          id: 1234567890,
           name: "Marcela",
           telefono: 1234567890,
           correo: "example@example.com",
@@ -197,6 +209,7 @@ export default {
           pais: "Colombia",
         },
         {
+          id: 1234567890,
           name: "Sergio",
           telefono: 1234567890,
           correo: "example@example.com",
