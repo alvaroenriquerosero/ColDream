@@ -1,12 +1,13 @@
 <template>
   <div id="app">
     <v-app id="inspire">
-      <h2 class="text-center display-2">
-        Solicitud De Hora Cátedra
-      </h2>
       <v-container fluid>
         <v-row align="center" justify="space-around">
           <v-col cols="6">
+            <h2 class="text-center">
+              Solicitud de Hora Cátedra
+
+            </h2>
             <v-select :items="areas" label="Áreas académicas"></v-select>
           </v-col>
         </v-row>
@@ -14,20 +15,13 @@
           <v-col cols="6">
             <v-select :items="docente" label="Docente"></v-select>
             <v-divider inset vertical></v-divider>
-
+            
             <v-row align="center" justify="space-around">
-              <v-btn
-                rounded
-                x-large
-                depressed
-                color="green lighten-4"
-                @click="$router.push('/schedule')"
-              >
+              <v-btn x-large depressed color="green lighten-4" @click="$router.push('/schedule')">
                 Consultar
               </v-btn>
-
+              
               <v-btn
-                rounded
                 x-large
                 depressed
                 color="primary"
@@ -46,7 +40,8 @@
 </template>
 
 <script>
-import DateField from "../components/inputs/DateField.vue";
+
+import DateField from '../components/inputs/DateField.vue'
 
 export default {
   name: "App",

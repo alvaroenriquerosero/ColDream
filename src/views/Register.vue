@@ -1,7 +1,6 @@
 <template>
   <div id="app">
     <v-app id="inspire">
-      <h1 class="text-center display-2">Registro De Docentes</h1>
       <v-data-table
         :headers="headers"
         :items="docentes"
@@ -10,14 +9,12 @@
       >
         <template v-slot:top>
           <v-toolbar flat>
-            <v-toolbar-title>Información De Docentes</v-toolbar-title>
+            <v-toolbar-title>Registro De Docentes</v-toolbar-title>
             <v-divider class="mx-4" inset vertical></v-divider>
             <v-spacer></v-spacer>
             <v-dialog v-model="dialog" max-width="500px">
               <template v-slot:activator="{ on, attrs }">
                 <v-btn
-                  rounded
-                  x-large
                   color="primary"
                   dark
                   class="mb-2"
@@ -119,7 +116,7 @@
           </v-btn>
         </template>
       </v-data-table>
-      <v-btn rounded x-large color="primary" @click="$router.push('/menu')"
+      <v-btn x-large color="primary" @click="$router.push('/menu')"
         >Volver</v-btn
       >
     </v-app>
