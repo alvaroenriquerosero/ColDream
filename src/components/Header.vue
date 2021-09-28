@@ -1,7 +1,7 @@
 <template>
     <v-app-bar
       app
-      color="primary"
+      color="indigo darken-4"
       dark
     >
       <h1>APP ColDream</h1>
