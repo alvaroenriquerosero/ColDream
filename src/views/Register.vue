@@ -5,7 +5,7 @@
       <v-data-table
         :headers="headers"
         :items="docentes"
-        sort-by="name"
+        sort-by="nombres"
         class="elevation-1"
       >
         <template v-slot:top>
@@ -37,14 +37,20 @@
                     <v-row>
                       <v-col cols="12" sm="6" md="4">
                         <v-text-field
-                          v-model="editedItem.name"
+                          v-model="editedItem.nombres"
                           label="ID"
                         ></v-text-field>
                       </v-col>
                       <v-col cols="12" sm="6" md="4">
                         <v-text-field
-                          v-model="editedItem.name"
-                          label="Nombres Completos"
+                          v-model="editedItem.nombres"
+                          label="Nombres"
+                        ></v-text-field>
+                      </v-col>
+                      <v-col cols="12" sm="6" md="4">
+                        <v-text-field
+                          v-model="editedItem.apellidos"
+                          label="Apellidos"
                         ></v-text-field>
                       </v-col>
                       <v-col cols="12" sm="6" md="4">
@@ -138,7 +144,8 @@ export default {
         sortable: true,
         value: "id",
       },
-      { text: "Nombres Completos", value: "name" },
+      { text: "Nombres", value: "nombres" },
+      { text: "Apellidos", value: "apellidos" },
       { text: "Telefono", value: "telefono" },
       { text: "Correo", value: "correo" },
       { text: "Ciudad", value: "ciudad" },
@@ -149,15 +156,17 @@ export default {
     editedIndex: -1,
     editedItem: {
       id: 0,
-      name: "",
-      telefono: 1234567890,
+      nombres: "",
+      apellidos: "",
+      telefono: 0,
       correo: "",
       ciudad: "",
       pais: "",
     },
     defaultItem: {
-      id: 1234567890,
-      name: "nombre",
+      id: 0,
+      nombres: "nombres",
+      apellidos: "apellidos",
       telefono: 1234567890,
       correo: "example@example.com",
       ciudad: "Bogotá",
@@ -188,34 +197,38 @@ export default {
     initialize() {
       this.docentes = [
         {
-          id: 1234567890,
-          name: "Ximena",
+          id: 1,
+          nombres: "Ximena",
+          apellidos: "example",
           telefono: 1234567890,
-          correo: "example@example.com",
+          correo: "ximena@example.com",
           ciudad: "Bogotá",
           pais: "Colombia",
         },
         {
-          id: 1234567890,
-          name: "Carlos",
+          id: 2,
+          nombres: "Carlos",
+          apellidos: "example",
           telefono: 1234567890,
-          correo: "example@example.com",
+          correo: "carloa@example.com",
           ciudad: "Bogotá",
           pais: "Colombia",
         },
         {
-          id: 1234567890,
-          name: "Marcela",
+          id: 3,
+          nombres: "Marcela",
+          apellidos: "example",
           telefono: 1234567890,
-          correo: "example@example.com",
+          correo: "marcela@example.com",
           ciudad: "Bogotá",
           pais: "Colombia",
         },
         {
-          id: 1234567890,
-          name: "Sergio",
+          id: 4,
+          nombres: "Sergio",
+          apellidos: "example",
           telefono: 1234567890,
-          correo: "example@example.com",
+          correo: "sergio@example.com",
           ciudad: "Bogotá",
           pais: "Colombia",
         },
