@@ -191,9 +191,11 @@ export default {
 
   created() {
     this.initialize();
+    
   },
 
   methods: {
+    
     initialize() {
       this.docentes = [
         {
